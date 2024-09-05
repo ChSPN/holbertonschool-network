@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
-# Ce script modifie le fichier /etc/hosts pour rediriger les IPs
+# Script that that configures an Ubuntu server with the below requirements:
+# localhost resolves to 127.0.0.2
+# facebook.com resolves to 8.8.8.8.
 
-# Utilisation de sudo pour ajouter les entrées nécessaires au fichier /etc/hosts
-sudo bash -c 'echo -e "127.0.0.2 localhost\n8.8.8.8 facebook.com" > /etc/hosts'
+# Backup the current /etc/hosts file
+sudo cp /etc/hosts /etc/hosts.bak
+
+# Add new entries
+echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
+echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
+
+#------- SCRIPT TO RESTORE BACK !!! -----------
+# Restore the original /etc/hosts file from the backup
+# if [ -f /etc/hosts.bak ]; then
+#   sudo cp /etc/hosts.bak /etc/hosts
+#   echo "The /etc/hosts file has been restored to its original state."
+# else
+#   echo "Backup file /etc/hosts.bak not found. Cannot restore original settings."
+# fi
+#---------------------------------------------
