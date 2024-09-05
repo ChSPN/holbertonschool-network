@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# Display active listeniNng network connections
-
-sudo netstat -tuln
+# Listen for incoming connections
+netstat -an -p tcp
