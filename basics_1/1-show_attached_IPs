@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Use the 'ifconfig' command to display active IPv4 addresses on the machine
+# 'grep -oP' extracts IP addresses using a regular expression
 
-# Display all active IPv4 IPs on the machine
-ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' 
+ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
