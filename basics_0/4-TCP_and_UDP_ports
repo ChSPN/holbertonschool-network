@@ -1,4 +1,3 @@
-#!/bin/bash
-
-# Display only listening sockets with PID/Program name
-ss -tulnps
+#!/usr/bin/env bash
+# Listen for incoming connections
+netstat -an -p tcp
